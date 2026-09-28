@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+.idea/
+.vscode/
+
+# raw data is downloaded, not committed
+data/*.zip
+data/*.csv
+!data/download_data.py
+
+# run outputs
+results/figures/*
+results/models/*
+results/metrics.csv
+results/scheduling_summary.csv
+!results/figures/.gitkeep
