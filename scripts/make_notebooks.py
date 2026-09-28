@@ -24,12 +24,15 @@ except ImportError:
 BOOTSTRAP = (
     "import sys\n"
     "from pathlib import Path\n"
-    "# make the project `src` package importable when the notebook runs\n"
-    "# from anywhere inside the repository\n"
+    "# locate the repository root robustly: works when the kernel runs from\n"
+    "# the repo root OR from inside notebooks/\n"
     "PROJECT_ROOT = Path.cwd()\n"
+    "if not (PROJECT_ROOT / 'src').exists():\n"
+    "    PROJECT_ROOT = PROJECT_ROOT.parent\n"
     "if str(PROJECT_ROOT) not in sys.path:\n"
     "    sys.path.insert(0, str(PROJECT_ROOT))\n"
     "import matplotlib.pyplot as plt\n"
+    "%matplotlib inline\n"
 )
 
 
